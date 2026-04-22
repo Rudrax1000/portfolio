@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-heritage-cream: #F9F6F0;
+  --color-heritage-red: #7A0A15;
+  --color-heritage-gold: #D4AF37;
+  --color-heritage-black: #1A1A1A;
+  
+  /* Masuline Retro Portfolio Palette */
+  --color-retro-dark: #121212;
+  --color-retro-vanilla: #f4ece1;
+  --color-retro-slate: #274852;
+  --color-retro-auburn: #8b3a3a;
+  --color-retro-yellow: #d4a84b;
+  --color-tape-pink: #d94e77;
+  
+  --font-display: "Amatic SC", cursive;
+  --font-serif: "Special Elite", monospace;
+  --font-sans: "Architects Daughter", cursive;
+  --font-handwriting: "Kalam", cursive;
+  
+  --backgroundImage-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  --backgroundImage-lined: repeating-linear-gradient(transparent, transparent 1.95rem, rgba(51, 92, 103, 0.2) 1.95rem, rgba(51, 92, 103, 0.2) 2rem);
+  --backgroundImage-table: url("/sketch-bg.png");
+}
+
+/* Hide scrollbar completely but keep scrolling functionally */
+::-webkit-scrollbar {
+  display: none;
+}
+body, html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  /* Global Pen Cursor */
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%232B1810" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>') 2 22, auto;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom transitions and animations */
+.page-shadow-right {
+  box-shadow: inset -40px 0 50px rgba(0,0,0,0.1);
+}
+
+.page-shadow-left {
+  box-shadow: inset 40px 0 50px rgba(0,0,0,0.1);
+}
+
+.paper-texture {
+  background-image: var(--backgroundImage-noise);
+}
+
+/* GSAP Parallax Helpers */
+.parallax {
+  will-change: transform, opacity;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
